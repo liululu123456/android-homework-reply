@@ -1,0 +1,10 @@
+fileignoreconfig:
+- filename: .idea/deploymentTargetDropDown.xml
+  checksum: e4f51e9ce2c9db82c0a7a4ac315f518fd5076058da257df52e8be3c30a919087
+- filename: app/build.gradle.kts
+  checksum: 298e1caf68f1930e5a91c430d2cf4f1326530b141136c8cde56fa6287b698e10
+- filename: buildscripts/toml-updater-config.gradle
+  checksum: e99603c06eb71ce301dbc71a124a6e453453e23e24b02baac6e2f85ba2b9a6de
+- filename: gradle/libs.versions.toml
+  checksum: 652b8f251d9ae85b7a0a056146e3481e8d3a6eb9a22d74e96f586b3dba9b5c62
+version: ""
