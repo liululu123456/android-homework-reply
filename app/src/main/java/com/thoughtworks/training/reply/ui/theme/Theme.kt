@@ -249,8 +249,11 @@ fun isContrastAvailable(): Boolean {
 
 @Composable
 fun selectSchemeForContrast(isDark: Boolean,): ColorScheme {
-   // TODO
-    return lightScheme
+    return if (isDark) {
+        highContrastDarkColorScheme
+    } else {
+        lightScheme
+    }
 }
 @Composable
 fun ContrastAwareReplyTheme(

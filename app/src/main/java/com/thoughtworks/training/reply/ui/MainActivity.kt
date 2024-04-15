@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import com.thoughtworks.training.reply.ui.theme.ContrastAwareReplyTheme
 
@@ -16,7 +17,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            ContrastAwareReplyTheme {
+            ContrastAwareReplyTheme(darkTheme = isSystemInDarkTheme()) {
                 ReplyApp()
             }
         }
