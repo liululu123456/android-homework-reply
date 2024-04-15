@@ -114,13 +114,6 @@ private fun ReplyNavHost(
     ) {
         composable(ReplyRoute.INBOX) {
             ReplyInboxScreen(
-                contentType = contentType,
-                replyHomeUIState = replyHomeUIState,
-                navigationType = navigationType,
-                displayFeatures = displayFeatures,
-                closeDetailScreen = closeDetailScreen,
-                navigateToDetail = navigateToDetail,
-                toggleSelectedEmail = toggleSelectedEmail,
                 viewModel = viewModel
             )
         }
