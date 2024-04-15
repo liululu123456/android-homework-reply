@@ -43,7 +43,6 @@ fun ReplyDockedSearchBar(
     modifier: Modifier = Modifier
 ) {
     var query by remember { mutableStateOf("") }
-    var active by remember { mutableStateOf(false) }
     val searchResults = remember { mutableStateListOf<Email>() }
 
     LaunchedEffect(query) {

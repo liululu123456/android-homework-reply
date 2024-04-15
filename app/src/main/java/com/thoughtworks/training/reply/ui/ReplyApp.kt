@@ -1,12 +1,23 @@
 package com.thoughtworks.training.reply.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -17,6 +28,7 @@ import com.thoughtworks.training.reply.data.EmailsRepositoryImpl
 import com.thoughtworks.training.reply.ui.navigation.ReplyNavigationRail
 import com.thoughtworks.training.reply.ui.navigation.ReplyRoute
 import com.thoughtworks.training.reply.ui.navigation.ReplyTopLevelDestination
+import com.thoughtworks.training.reply.ui.theme.tertiaryContainerLight
 import com.thoughtworks.training.reply.ui.utils.ReplyContentType
 import com.thoughtworks.training.reply.ui.utils.ReplyNavigationContentPosition
 import com.thoughtworks.training.reply.ui.utils.ReplyNavigationType
@@ -36,6 +48,18 @@ fun ReplyApp(
     val viewModel = ReplyHomeViewModel(repository)
 
     Scaffold(
+        floatingActionButton = {
+            FloatingActionButton(
+                modifier = Modifier
+                    .size(100.dp)
+                    .clip(RoundedCornerShape(24.dp)),
+                onClick = {},
+                containerColor = tertiaryContainerLight
+
+            ) {
+                Icon(Icons.Default.Edit, contentDescription = "edit")
+            }
+        },
         bottomBar = {
             ReplyNavigationWrapper(
                 navigationContentPosition = ReplyNavigationContentPosition.CENTER,
@@ -73,25 +97,6 @@ private fun ReplyNavigationWrapper(
         navigationContentPosition = navigationContentPosition,
         onDrawerClicked = onTabSelected,
     )
-}
-
-@Composable
-fun ReplyAppContent(
-    modifier: Modifier = Modifier,
-    navigationType: ReplyNavigationType,
-    contentType: ReplyContentType,
-    displayFeatures: List<DisplayFeature>,
-    navigationContentPosition: ReplyNavigationContentPosition,
-    replyHomeUIState: ReplyHomeUIState,
-    navController: NavHostController,
-    selectedDestination: String,
-    navigateToTopLevelDestination: (ReplyTopLevelDestination) -> Unit,
-    closeDetailScreen: () -> Unit,
-    navigateToDetail: (Long, ReplyContentType) -> Unit,
-    toggleSelectedEmail: (Long) -> Unit,
-    onDrawerClicked: () -> Unit = {}
-) {
-     // TODO
 }
 
 @Composable

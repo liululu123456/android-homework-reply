@@ -15,6 +15,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.StarOutline
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -33,9 +34,12 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.thoughtworks.training.reply.ui.components.ReplyDockedSearchBar
+import com.thoughtworks.training.reply.ui.theme.outlineLightMediumContrast
 
 @Composable
 fun ReplyInboxScreen(
@@ -95,6 +99,10 @@ fun ReplyEmailDetail(
     email: Email,
     modifier: Modifier = Modifier,
 ) {
+    var isLiked by remember { mutableStateOf(false) }
+    var likedIcon by remember { mutableStateOf(Icons.Default.StarOutline) }
+
+
     Column (modifier = modifier
         .fillMaxWidth()
         .padding(16.dp)
@@ -107,11 +115,14 @@ fun ReplyEmailDetail(
                 model = email.sender.avatar,
                 contentDescription = null,
                 modifier = Modifier
+                    .weight(1.5f)
                     .clip(CircleShape)
                     .size(48.dp),
                 contentScale = ContentScale.Crop,
             )
-            Column(Modifier.padding(horizontal = 10.dp)) {
+            Column(Modifier.padding(horizontal = 10.dp)
+                .weight(8f)
+            ) {
                 Text(text = email.sender.firstName,
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Bold)
@@ -119,15 +130,21 @@ fun ReplyEmailDetail(
                     fontSize =12.sp,
                     fontWeight = FontWeight.Bold)
             }
-//            Button(modifier = Modifier
-//                .size(36.dp)
-//                .background(outlineLightMediumContrast)
-//                .clip(CircleShape),
-//                onClick = {})
-//            {
-//                Image(Icons.Default.StarOutline,
-//                    contentDescription = "LIKE")
-//            }
+            Box(modifier = Modifier
+                .size(48.dp)
+                .clip(CircleShape)
+                .background(Color.LightGray)
+                .clickable{
+                    isLiked = !isLiked
+                    likedIcon = if (isLiked) Icons.Default.Star else Icons.Default.StarOutline
+                },
+            ){
+                Image(
+                    imageVector = likedIcon,
+                    contentDescription = "LIKE",
+                    modifier = Modifier.align(Alignment.Center)
+                )
+            }
 
 
         }
