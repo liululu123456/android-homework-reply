@@ -20,6 +20,13 @@ class MainActivity : ComponentActivity() {
         setContent {
             ContrastAwareReplyTheme {
                 // TODO
+                ReplyApp(
+                    displayFeatures = emptyList(),
+                    replyHomeUIState = ReplyHomeUIState(),
+                    closeDetailScreen = { /* 实现关闭详细屏幕的逻辑 */ },
+                    navigateToDetail = { id, type -> /* 实现导航到详细页面的逻辑 */ },
+                    toggleSelectedEmail = { id -> /* 实现切换选定电子邮件的逻辑 */ }
+                )
             }
         }
     }

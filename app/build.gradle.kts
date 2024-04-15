@@ -99,13 +99,16 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlinx.coroutines.android)
+    implementation (libs.coil.compose)
 
     implementation(libs.androidx.compose.ui.tooling.preview)
     debugImplementation(libs.androidx.compose.ui.tooling)
 
     implementation(libs.androidx.compose.material3)
     implementation("com.google.accompanist:accompanist-adaptive:0.26.2-beta")
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 
+    implementation("androidx.compose.runtime:runtime-livedata")
     implementation(libs.androidx.compose.materialWindow)
     implementation(libs.androidx.compose.material.iconsExtended)
 
