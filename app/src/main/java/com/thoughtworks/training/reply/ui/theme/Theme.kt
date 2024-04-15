@@ -267,7 +267,7 @@ fun ContrastAwareReplyTheme(
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
 
-        else -> selectSchemeForContrast(true)
+        else -> selectSchemeForContrast(darkTheme)
     }
     val view = LocalView.current
     if (!view.isInEditMode) {
