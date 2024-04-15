@@ -1,6 +1,5 @@
 package com.thoughtworks.training.reply.ui
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -13,33 +12,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.window.layout.DisplayFeature
 import com.thoughtworks.training.reply.data.EmailsRepository
 import com.thoughtworks.training.reply.data.EmailsRepositoryImpl
 import com.thoughtworks.training.reply.ui.navigation.ReplyNavigationRail
 import com.thoughtworks.training.reply.ui.navigation.ReplyRoute
-import com.thoughtworks.training.reply.ui.navigation.ReplyTopLevelDestination
 import com.thoughtworks.training.reply.ui.theme.tertiaryContainerLight
-import com.thoughtworks.training.reply.ui.utils.ReplyContentType
 import com.thoughtworks.training.reply.ui.utils.ReplyNavigationContentPosition
-import com.thoughtworks.training.reply.ui.utils.ReplyNavigationType
 
 @Composable
 fun ReplyApp(
-    displayFeatures: List<DisplayFeature>,
-    replyHomeUIState: ReplyHomeUIState,
-    closeDetailScreen: () -> Unit = {},
-    navigateToDetail: (Long, ReplyContentType) -> Unit = { _, _ -> },
-    toggleSelectedEmail: (Long) -> Unit = { }
 ) {
 
     val navController = rememberNavController()
@@ -72,14 +60,7 @@ fun ReplyApp(
     ) {
         innerPadding ->
         ReplyNavHost(
-            navigationType = ReplyNavigationType.BOTTOM_NAVIGATION,
-            contentType = ReplyContentType.SINGLE_PANE,
             navController = navController,
-            displayFeatures = displayFeatures,
-            replyHomeUIState = replyHomeUIState,
-            closeDetailScreen = closeDetailScreen,
-            navigateToDetail = navigateToDetail,
-            toggleSelectedEmail = toggleSelectedEmail,
             modifier = Modifier.padding(innerPadding),
             viewModel = viewModel
         )
@@ -102,13 +83,6 @@ private fun ReplyNavigationWrapper(
 @Composable
 private fun ReplyNavHost(
     navController: NavHostController,
-    contentType: ReplyContentType,
-    displayFeatures: List<DisplayFeature>,
-    replyHomeUIState: ReplyHomeUIState,
-    navigationType: ReplyNavigationType,
-    closeDetailScreen: () -> Unit,
-    navigateToDetail: (Long, ReplyContentType) -> Unit,
-    toggleSelectedEmail: (Long) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: ReplyHomeViewModel
 ) {
