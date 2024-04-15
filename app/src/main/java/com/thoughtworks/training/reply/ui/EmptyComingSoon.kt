@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 fun EmptyComingSoon(
     modifier: Modifier = Modifier
 ) {
-    // TODO
+    Text(text = "We will come soon")
 }
 
 @Preview
